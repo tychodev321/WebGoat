@@ -18,16 +18,12 @@ pipeline:
           execution:
             steps:
               - step:
-                  identifier: dockerbuild
-                  name: docker_build
+                  type: Run
+                  name: Build
+                  identifier: Build
                   spec:
-                    image: plugins/docker
-                    settings:
-                      dry_run: "true"
-                      repo: hello/world
-                      tags: latest
-                  timeout: ""
-                  type: Plugin
+                    shell: Bash
+                    command: echo "Hello World"
           platform:
             arch: Amd64
             os: Linux
