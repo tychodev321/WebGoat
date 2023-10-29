@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_WebGoat_1698542855852-pr-trigger-input-set
+  identifier: Build_WebGoat_1698542855852prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_WebGoat_1698542855852
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
