@@ -18,16 +18,27 @@ pipeline:
           execution:
             steps:
               - step:
-                  identifier: dockerbuild
-                  name: docker_build
+                  type: Run
+                  name: Build
+                  identifier: Build
                   spec:
-                    image: plugins/docker
-                    settings:
-                      dry_run: "true"
-                      repo: hello/world
-                      tags: latest
-                  timeout: ""
-                  type: Plugin
+                    shell: Bash
+                    command: echo "Hello World"
+                  failureStrategies:
+                    - onFailure:
+                        errors:
+                          - Unknown
+                        action:
+                          type: Retry
+                          spec:
+                            retryCount: 3
+                            retryIntervals:
+                              - 1m
+                            onRetryFailure:
+                              action:
+                                type: MarkAsFailure
+                  when:
+                    stageStatus: All
           platform:
             arch: Amd64
             os: Linux
