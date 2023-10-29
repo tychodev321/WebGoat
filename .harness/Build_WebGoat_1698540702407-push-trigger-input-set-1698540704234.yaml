@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_WebGoat_1698540702407-push-trigger-input-set
+  identifier: Build_WebGoat_1698540702407pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_WebGoat_1698540702407
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
